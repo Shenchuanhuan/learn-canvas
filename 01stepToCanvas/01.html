@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canvas画直线</title>
+</head>
+<body>
+  <pre>
+    NOTE:
+      基本步骤：
+        1. 创建canvas元素，并赋予长宽值（html部分
+        2. 获取canvas元素，判断元素的getContext是否存在，即浏览器是否支持canvas
+        3. 如果支持，则创建绘图环境 ==> ctx = node.getContext('2d') //这里是创建了一个画2d的环境
+        4. 设置线条样式，比如线条宽度、颜色等
+        5. 设置线条的起始点 moveTo/lineTo
+        6. 最后画线：ctx.stroke()
+
+      tip: 
+        lineCap ==> 线条两端的样式 ==> butt / round / square
+
+      warn: Remeber to use &lt;canvas&gt; not &lt;div&gt;!
+  </pre>
+  <canvas id="myCanvas" width="400" height="400">
+    您的浏览器不支持HTML5
+  </canvas>
+  <script type="text/javascript">
+    var c = document.getElementById('myCanvas');
+    if (c.getContext) {
+      //设置绘制环境
+      var ctx = c.getContext('2d');
+
+      //线条的宽度
+      ctx.lineWidth = 10;
+
+      //线条的颜色
+      ctx.strokeStyle = "red";
+
+      //创建新路径
+      ctx.beginPath();
+
+      //将画笔光标移动到(10, 10)处
+      ctx.moveTo(10, 10);
+
+      //将画笔光标移动到(150, 150)处
+      ctx.lineTo(150, 50);
+
+      //绘制定义好的路径
+      ctx.stroke();
+
+      ctx.lineCap = "butt";
+      ctx.beginPath();
+      ctx.moveTo(10, 100);
+      ctx.lineTo(150, 10);
+      ctx.stroke();
+
+      ctx.lineCap="round";
+      ctx.beginPath();
+      ctx.moveTo(10, 120);
+      ctx.lineTo(150, 60);
+      ctx.stroke();
+
+      ctx.lineCap="square";
+      ctx.beginPath();
+      ctx.moveTo(10, 140);
+      ctx.lineTo(150, 120);
+      ctx.stroke();
+    }
+    
+  </script>
+</body>
+</html>

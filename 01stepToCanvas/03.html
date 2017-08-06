@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>画圆</title>
+</head>
+<body>
+  <pre>
+    NOTE:
+      1.arc画圆函数接受6个参数：arc(x,y,r,startAngle,endAngle,是否逆时针);
+      x --圆心x坐标
+      y --圆心y坐标
+  </pre>
+  <canvas id="circle" width="500" height="500"></canvas>
+  <script>
+    var circle = document.querySelector('#circle');
+    if (circle.getContext) {
+      var ctx = circle.getContext('2d'); 
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      ctx.arc(100,100,70,0,130*Math.PI/180,true);
+      ctx.stroke();
+      //实心圆
+      ctx.fillStyle = "yellow";
+      ctx.beginPath();
+      ctx.arc(200,200,70,0,360*Math.PI/180,true);      
+      ctx.fill();
+    }
+  </script>
+</body>
+</html>

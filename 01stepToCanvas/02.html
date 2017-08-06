@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>画矩形</title>
+</head>
+<body>
+  <pre>
+    NOTE: 
+      1.strokeRect函数 ==>绘制矩形函数，接收四个参数：[x,y,width,height];
+      2.strokeRect could be replace by {
+        1. ctx.rect(x,y,width,height);
+        2.ctx.stroke();
+      }
+      3.区别于画线:  moveTo lineTo
+      4.画空心的：stroke 画实心的: fill （可以理解成一个是画线，一个是填充
+  </pre>
+  <canvas id="myCanvas" width="600" height="500"></canvas>
+  <script type="text/javascript">
+    var myCanvas = document.querySelector('#myCanvas');
+    if (myCanvas.getContext) {
+      var ctx = myCanvas.getContext('2d');
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "red";
+      ctx.beginPath();
+      ctx.strokeRect(10,10,70,40);
+
+      //画实心矩形
+      ctx.fillStyle = "green";
+      ctx.beginPath();
+      ctx.fillRect(60,60,70,40);
+    }
+  </script>
+</body>
+</html>
