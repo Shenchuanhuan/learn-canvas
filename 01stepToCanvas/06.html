@@ -20,9 +20,17 @@
     <canvas id="second" width="800" height="400"></canvas>
   </section>
 
+   <section>
+    <h2>传别一个canvas元素进行绘制</h2>
+    <canvas id="third" width="800" height="400"></canvas>
+    <canvas id="fourth" width="100" height="100"></canvas>
+  </section>
+
   <script type="text/javascript">
     var first = document.querySelector('#first');
     var second = document.querySelector('#second');
+    var third = document.querySelector('#third');
+    var fourth = document.querySelector('#fourth');
 
     var _image = document.querySelector('#img');
     var _image1 = new Image();
@@ -46,6 +54,23 @@
     }
     /**
       先放一张源图像，然后定一个点，根据指定的长宽进行裁剪，裁剪出来的这一部分源图像，以点（200,200）为起点，指定的230和310进行缩放，最终画到画布上。
+    */
+
+    //使用另一个canvas元素当参数，将其画到画布上
+    if (fourth.getContext) {
+      var fourctx = fourth.getContext('2d');
+      fourctx.fillStyle = 'red';
+      fourctx.arc(50, 50, 30, 0, 2*Math.PI, true );
+      fourctx.fill();
+    }
+    if (third.getContext) {
+      var thctx = third.getContext('2d');
+      thctx.drawImage(fourth, 0, 0);
+    }
+
+    /**
+    *摘录自高程设计：结合使用drawImage()和其他方法， 可以对图你进行各种基本操作。而操作的结果可以通过 toDataURL()
+    *获得。不过，有一个例外，即图像不能来自其他 域，如果图像来自其他 域，调用toDataURL会抛出一个错误。
     */
   </script>
 </body>
