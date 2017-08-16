@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绘制图像</title>
+</head>
+<body>
+  <pre>
+    NOTE: 通过调用drawImage()方法可以将一幅图像绘制到画布上，调用该方法时有三种不同的参数组合。
+    第一种：传入一个html的image元素，以及绘制图像的起点坐标。
+
+  </pre>
+  <img id="img" src="./06.jpg"/>
+  <canvas id="first" width='800' height="400"></canvas>
+
+  <section>
+    <h2>传入9个参数的drawImage</h2>
+    <canvas id="second" width="800" height="400"></canvas>
+  </section>
+
+  <script type="text/javascript">
+    var first = document.querySelector('#first');
+    var second = document.querySelector('#second');
+
+    var _image = document.querySelector('#img');
+    var _image1 = new Image();
+    _image1.src = '06.jpg';
+    
+    if (first.getContext) {
+      var fctx = first.getContext('2d');
+
+      //params: 图像源, x坐标，y坐标，指定宽， 指定高
+      _image.onload = function() {
+        fctx.drawImage(_image1, 10, 10); //没有最后两个参数，则画的图像大小跟图像源一样大小
+        fctx.drawImage(_image1, 10, 10, 100, 100);  //最后的 100 100 表示 指定图像大小为100*100
+      }
+    }
+
+    if (second.getContext) {
+      var sctx = second.getContext('2d');
+      _image1.onload = function() {
+        sctx.drawImage(_image1, 0, 0, 300, 300, 200, 200, 40, 60)
+      }
+    }
+    /**
+      先放一张源图像，然后定一个点，划长宽，在划出来的这个范围里，找一个点，裁剪指定长宽的图像。
+    */
+  </script>
+</body>
+</html>

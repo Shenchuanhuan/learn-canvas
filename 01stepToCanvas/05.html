@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用canvas实现的时钟</title>
+</head>
+<body>
+  <canvas id="clock" width='500' height='500' style='border: 1px solid #000'></canvas>
+  <script type="text/javascript">
+    var clock = document.querySelector('#clock');
+    if (clock.getContext) {
+      var ctx = clock.getContext('2d');
+
+      //第一步：画最外层的圆
+      ctx.beginPath();
+      ctx.arc(200, 200, 100, 0, 2*Math.PI, true);
+      ctx.stroke();
+      ctx.closePath();
+
+      //第二步： 画内圆
+      ctx.beginPath();
+      ctx.arc(200, 200, 98, 0, 2*Math.PI, true);
+      ctx.stroke();
+      ctx.closePath();
+
+      //第三步：画指针
+      ctx.beginPath();
+      ctx.moveTo(200, 200);
+      ctx.lineTo(200, 140);
+      ctx.stroke();
+      ctx.closePath();
+      
+      ctx.beginPath();
+      ctx.moveTo(200, 200);
+      ctx.lineTo(120 , 200);
+      ctx.stroke();
+
+      // 画时刻 canvas画文字的方法有二： fillText & strokeText ,接收三个参数： 文字内容，绘制坐标
+      ctx.font = '14px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('12', 200, 110);
+      
+
+    }
+  </script>
+</body>
+</html>
