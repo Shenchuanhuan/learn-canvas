@@ -41,11 +41,11 @@
     if (second.getContext) {
       var sctx = second.getContext('2d');
       _image1.onload = function() {
-        sctx.drawImage(_image1, 0, 0, 300, 300, 200, 200, 40, 60)
+        sctx.drawImage(_image1, 0, 0, 300, 300, 200, 200, 230, 310)
       }
     }
     /**
-      先放一张源图像，然后定一个点，划长宽，在划出来的这个范围里，找一个点，裁剪指定长宽的图像。
+      先放一张源图像，然后定一个点，根据指定的长宽进行裁剪，裁剪出来的这一部分源图像，以点（200,200）为起点，指定的230和310进行缩放，最终画到画布上。
     */
   </script>
 </body>
