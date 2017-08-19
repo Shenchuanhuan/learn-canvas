@@ -7,6 +7,13 @@
   <title>canvas绘制阴影</title>
 </head>
 <body>
-  
+  <pre>
+    NOTE: 2D上下文会根据以下几个属性的值，自动为形状或路径绘制出阴影。
+    1. shadowColor: 用CSS颜色格式表示的阴影颜色，默认为黑色。
+    2. shadowOffsetX: 形状或路径x轴方向的阴影偏移量，默认为0。
+    3. shadowOffsetY: 形状或路径y轴方向的阴影偏移量，默认为0。
+    4. shadowBlur: 模糊的像素数，默认0，即不模糊。
+    这些属性都可以通过context对象来修改。只要在绘制前为它们设置适当的值，就能自动产生阴影。
+  </pre>
 </body>
 </html>
