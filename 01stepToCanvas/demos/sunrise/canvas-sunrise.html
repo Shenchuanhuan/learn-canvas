@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas日出日落</title>
+</head>
+<body>
+  <canvas id="sunshine" width="1000" height="500">
+    当前浏览器不支持canvas，请更换浏览器之后再试。
+  </canvas>
+  <script type="text/javascript">
+
+    var ss = document.querySelector('#sunshine');
+    if (ss.getContext) {
+      var ctx = ss.getContext('2d');
+      var $angle = 0;
+      var num = 0;
+        // ctx.beginPath();
+        // ctx.fillStyle = 'rgba(255,0,0,0.2)';
+        // ctx.rect(0,0, 1000, 500);
+        // ctx.fill();
+        // ctx.closePath();
+
+        // ctx.beginPath();
+        // ctx.arc(500, 200, 60, 0, 2*Math.PI, true);
+        // ctx.fillStyle = 'yellow';
+        // ctx.fill();
+        // ctx.closePath();
+
+        // ctx.beginPath();
+        // ctx.fillStyle = 'blue';
+        // ctx.rect(0, 200, 1000, 300);
+        // ctx.fill();
+        // ctx.closePath();
+        
+        drawing();
+        function drawing() {
+        ctx.clearRect(0, 0, 1000, 500);
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255,0,0,0.2)';
+        ctx.rect(0,0, 1000, 500);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(Math.cos($angle)*60+500, Math.sin($angle)*60+250, 60, 0, 2*Math.PI, true);
+        ctx.fillStyle = 'yellow';
+        ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.fillStyle = 'blue';
+        ctx.rect(0, 200, 1000, 300);
+        ctx.fill();
+        ctx.closePath();
+        if (num < 180) {
+          ++num;
+          console.log($angle, '$angle')
+          $angle = 180/Math.PI*num;
+          window.requestAnimationFrame(drawing)
+        }
+      }
+        
+    }
+    
+    
+
+  </script>
+</body>
+</html>

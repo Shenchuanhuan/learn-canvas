@@ -15,5 +15,24 @@
     4. shadowBlur: 模糊的像素数，默认0，即不模糊。
     这些属性都可以通过context对象来修改。只要在绘制前为它们设置适当的值，就能自动产生阴影。
   </pre>
+
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <script type="text/javascript">
+    var canvas = document.querySelector('#canvas');
+    if (canvas.getContext) {
+      var context = canvas.getContext('2d');
+      context.shadowOffsetX = 5;
+      context.shadowOffsetY = 5;
+      context.shadowBlur = 4;
+      context.shadowColor = 'rgba(0, 0, 0, 0.5)';
+
+      context.fillStyle = '#ff0000';
+      context.fillRect(10, 10, 50, 50);
+
+      context.fillStyle = 'rgba(0, 0, 255, 1)';
+      context.fillRect(30, 30, 50, 50);
+
+    }
+  </script>
 </body>
 </html>
