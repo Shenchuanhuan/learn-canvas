@@ -1,3 +1,14 @@
-import Test from 'Test/test';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+class Test extends Component {
+  render() {
+    return (
+      <div>CANVAS-RECORDING</div>
+    )
+  }
+}
 
-console.log(Test);
+ReactDOM.render(
+  <Test />,
+  document.querySelector('#test')
+)

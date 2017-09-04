@@ -13,10 +13,13 @@ module.exports = {
         rules: [
             {
                 test: /\.(jsx|jsx)$/,
-                exclude: [
-                    path.resolve(__dirname, 'node_modules')
-                ],
-                use: ['babel-loader']
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['react','es2015']
+                    }
+                }
             }, {
                 test: /\.(css|scss|less)$/,
                 use: ['css-loader', 'style-loader', 'sass-loader']
@@ -28,9 +31,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWwbpackPlugin({
-            title: 'test',
+            title: 'canvas-recording',
             inject: true,
-            teplate: 'index.html'
+            template: 'index.html'
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
@@ -44,6 +47,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 8070,
-        hot: true
+        hot: true,
+        inline: true 
     }
 }
